@@ -28,7 +28,7 @@ public class UserController {
     
     public ResponseEntity<List<User>> getAllUser(){
         List<User> allUser = userService.getAllUser();
-        ResponseEntity<User> userResponseEntity = new ResponseEntity<User>(allUser, HttpStatus.OK);
+        ResponseEntity<User> userResponseEntit = new ResponseEntity<User>(allUser, HttpStatus.OK);
         return userResponseEntity;
     }
 }
