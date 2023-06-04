@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//This is a Controller Class
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -29,6 +29,6 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUser(){
         List<User> allUser = userService.getAllUser();
         ResponseEntity<User> userResponseEntit = new ResponseEntity<User>(allUser, HttpStatus.OK);
-        return userResponseEntity;
+//        return userResponseEntit;
     }
 }
