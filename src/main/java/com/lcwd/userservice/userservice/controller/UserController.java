@@ -14,21 +14,21 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
-
+// Creating user
     public ResponseEntity<User> createUser(@RequestBody User user){
         User user1 = userService.saveUser(user);
         return  new ResponseEntity<User>(user1,HttpStatus.CREATED);
     }
-
+//Getting User
     @GetMapping("/{userId}")
     public ResponseEntity<User> getSingleUser(@PathVariable String userId){
         User user = userService.getUser(userId);
         return new ResponseEntity<User>(user,HttpStatus.OK);
     }
-    
+    //Getting all Users
     public ResponseEntity<List<User>> getAllUser(){
         List<User> allUser = userService.getAllUser();
         ResponseEntity<User> userResponseEntit = new ResponseEntity<User>(allUser, HttpStatus.OK);
-//        return userResponseEntit;
+//        return userResponseEntity;
     }
 }
