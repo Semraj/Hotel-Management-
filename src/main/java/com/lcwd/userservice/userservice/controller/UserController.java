@@ -7,28 +7,41 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
+
+
+
 //This is a Controller Class
 @RestController
-@RequestMapping("/user")
+
 public class UserController {
+
     @Autowired
-    UserService userService;
-// Creating user
-    public ResponseEntity<User> createUser(@RequestBody User user){
+    private UserService userService;
+
+    @PostMapping("/addUser")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         User user1 = userService.saveUser(user);
-        return  new ResponseEntity<User>(user1,HttpStatus.CREATED);
-    }
+        return ResponseEntity.status(HttpStatus.CREATED).body(user1);
+   }
+@PostMapping("/addUsers")
+   public ResponseEntity<List<User>> createAllUser(@RequestBody List<User> user){
+    List<User> users = userService.saveAllUser(user);
+    return ResponseEntity.status(HttpStatus.CREATED).body(users);
+   }
 //Getting User
-    @GetMapping("/{userId}")
-    public ResponseEntity<User> getSingleUser(@PathVariable String userId){
-        User user = userService.getUser(userId);
-        return new ResponseEntity<User>(user,HttpStatus.OK);
+        @GetMapping("/{userId}")
+        public ResponseEntity<User> getSingleUser(@PathVariable String userId){
+        User user2 = userService.getUser(userId);
+
+        return ResponseEntity.status(HttpStatus.OK).body(user2);
     }
-    //Getting all Users
-    public ResponseEntity<List<User>> getAllUser(){
-        List<User> allUser = userService.getAllUser();
-        ResponseEntity<User> userResponseEntit = new ResponseEntity<User>(allUser, HttpStatus.OK);
-//        return userResponseEntity;
+        @GetMapping("/getUsers")
+        public ResponseEntity<List<User>> getAllUser () {
+            List<User> allUser = userService.getAllUser();
+            return ResponseEntity.status(HttpStatus.OK).body(allUser);
+
+        }
     }
-}
+

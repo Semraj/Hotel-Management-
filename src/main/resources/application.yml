@@ -9,6 +9,18 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  application:
+    name: User-Service
 #    properties:
 #      hibernate:
 #        dialect: org.hibernate.dialect.MYSQL8Dialect
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    prefer-ip-address: true
+    
+    
+    
